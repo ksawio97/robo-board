@@ -1,13 +1,10 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import DashBoard from './Components/DashBoard';
 
 function App() {
   return (
-    <div className="App">
-        <h1 className="text-3xl font-bold underline text-red-600">
-          Simple React Typescript Tailwind Sample
-        </h1>
+    <div className="App bg-gray-400 w-screen h-screen p-10">
+      <DashBoard></DashBoard>
     </div>
   );
 }
