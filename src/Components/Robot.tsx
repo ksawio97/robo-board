@@ -1,22 +1,18 @@
-import { memo, useEffect, useState } from "react"
-import RobotInfo from "./types/RobotInfo";
+import { memo, useEffect, useState } from "react";
 import Ripple from './Ripple/Ripple';
+import RobotInfo from '../utils/RobotInfo';
+
 type RobotProps = {
     robotInfo: RobotInfo
 }
 
-const getRobotLink = (robotInfo: RobotInfo): string => {
-    return `https://robohash.org/${robotInfo.name}`
-}
-
 const Robot = ({robotInfo}: RobotProps) => {
-    const robotLink = getRobotLink(robotInfo);
-
     const [loaded, setLoaded] = useState(false)
 
     useEffect(() => {
         setLoaded(false)
     }, [robotInfo])
+
     return (
         <div className="flex flex-col items-center shrink-0">
             <div className="h-10">
@@ -25,11 +21,11 @@ const Robot = ({robotInfo}: RobotProps) => {
                         <h2 className="text-center text-white text-xl font-bold">{robotInfo.name}</h2>
                 }
             </div>
-            <img src={robotLink} alt='Robot' onLoad={() => setLoaded(true)} style={{visibility: loaded ? 'visible' : 'hidden'}}></img>
+            <img className='transition-opacity duration-500' src={robotInfo.getRobotLink()} alt='Robot' onLoad={() => setLoaded(true)} style={{opacity: Number(loaded)}}></img>
         </div>
     )
 }
 
 export default memo(Robot, (prevProps, nextProps) => {
-    return prevProps.robotInfo.name === nextProps.robotInfo.name;
+    return prevProps.robotInfo.isEqual(nextProps.robotInfo);
 });
