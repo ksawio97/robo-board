@@ -6,7 +6,7 @@ Build image from Dockerfile
 ```
 docker image build -t <image-name>:<tag> <docker-directory>
 ```
-Running builded image (port 3000 is a react port)
+Running builded image (port 80 is a nginx port)
 ```
-docker run -dp <local-port>:3000 --name <container-name> <image-name>:<tag>
+docker run -dp <local-port>:80 --name <container-name> <image-name>:<tag>
 ```
