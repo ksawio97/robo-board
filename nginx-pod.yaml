@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: robo-board-pod
+  labels:
+    app: robo-board
+spec:
+  containers:
+  - name: robo-board-container
+    image: ksawio/robo-board:v1
+    ports:
+      - containerPort: 80

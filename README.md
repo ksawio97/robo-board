@@ -10,3 +10,8 @@ Running builded image (port 80 is a nginx port)
 ```
 docker run -dp <local-port>:80 --name <container-name> <image-name>:<tag>
 ```
+
+# Deploying on kubernetes cluster
+```
+kubectl apply -f nginx-pod.yaml -n default
+```
