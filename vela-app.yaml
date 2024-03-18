@@ -1,0 +1,15 @@
+apiVersion: core.oam.dev/v1beta1
+kind: Application
+metadata: 
+  name: robo-board-app
+  namespace: default
+spec:
+  components:
+    - name: robo-board-service
+      type: webservice
+      properties:
+        image: ksawio/robo-board:v1
+        ports:
+          - port: 80
+            expose: true
+        exposeType: NodePort
